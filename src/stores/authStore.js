@@ -14,7 +14,7 @@ export const useAuthStore = create((set) => ({
       });
       const data = await response.json();
       if (data.success) {
-        set({ user: data.user });
+        set({ user: data.data.user });
       }
       return data;
     } catch (error) {
@@ -67,6 +67,9 @@ export const useAuthStore = create((set) => ({
         { method: "GET", credentials: "include" }
       );
       const rtaJson = await rta.json();
+      console.log(rtaJson);
+      set(() => ({ user: rtaJson.data }));
+
       return rtaJson;
     } catch (error) {
       console.log(error);

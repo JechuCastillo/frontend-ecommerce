@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import LayoutLogin from "./components/LayoutLogin";
 import Productos from "./pages/Productos";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
 function App() {
   return (
     <Routes>
@@ -33,7 +34,14 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
-        <Route path="/admin" element={<Admin></Admin>}></Route>
+        <Route
+          path="/admin"
+          element={
+            <ProtectedAdminRoute>
+              <Admin></Admin>
+            </ProtectedAdminRoute>
+          }
+        ></Route>
       </Route>
     </Routes>
   );
