@@ -1,8 +1,11 @@
-import { Form, Container } from "react-bootstrap";
+import {Container } from "react-bootstrap";
+import FormCrearProducto from "../components/FormCrearProducto";
 function Admin() {
+  
   return (
-    <Container>
-      <h1>Admin</h1>
+    <Container className=" w-100 p-5 m-2 ">
+      <h1 className="text-center text-1 fw-bold titulo-admin">Admin</h1>
+      <FormCrearProducto></FormCrearProducto>
     </Container>
   );
 }
