@@ -13,9 +13,16 @@ function Productos() {
     cargarProductos();
   }, []); // Array de dependencias vacío para que se ejecute solo al montar
 
+  
   return (
     <>
       <Container className="w-100 p-4">
+        <h1>Listado de productos</h1>
+        <input
+          type="text"
+          className="p-2 border-0 shadow mb-2"
+          placeholder="Buscar producto.."
+        />
         <Table className="w-75 text-center">
           <tbody>
             <tr>
