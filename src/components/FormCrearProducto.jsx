@@ -5,6 +5,8 @@ import { Toast } from "react-bootstrap";
 function FormCrearProducto() {
   const { crearProducto } = useProductosStore();
   const [showToast, setShowToast] = useState(false);
+  const [toastColor, setToastColor] = useState("success");
+  const [toastMensaje, setToastMensaje] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     const nombre = e.target[0];
@@ -17,9 +19,15 @@ function FormCrearProducto() {
         precio.value
       );
       if (producto.success) {
+        setToastColor("success");
+        setToastMensaje("Producto agregado con exito");
         setShowToast(true);
-        e.target.reset();
+      } else {
+        setToastColor("danger");
+        setToastMensaje("Error al agregar el producto");
+        setShowToast(true);
       }
+      e.target.reset();
     } catch (error) {
       console.log("Error al agregar producto", error.message);
     }
@@ -49,6 +57,7 @@ function FormCrearProducto() {
         Crear producto
       </Button>
       <div id="resultado">
+        {}
         <Toast
           onClose={() => {
             setShowToast(false);
@@ -56,11 +65,9 @@ function FormCrearProducto() {
           show={showToast}
           delay={3000}
           autohide
-          bg="success"
+          bg={toastColor}
         >
-          <Toast.Body className="text-white">
-            Producto agregado con exito
-          </Toast.Body>
+          <Toast.Body className="text-white">{toastMensaje}</Toast.Body>
         </Toast>
       </div>
     </Form>
