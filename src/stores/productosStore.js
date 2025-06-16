@@ -11,7 +11,7 @@ const useProductosStore = create((set) => ({
       const productosJson = await productosFetch.json();
       set({ productos: productosJson.data });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   },
   crearProducto: async (nombreProducto, stockProducto, precioProducto) => {
@@ -21,13 +21,39 @@ const useProductosStore = create((set) => ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nombre: nombreProducto, stock: stockProducto, precio: precioProducto }),
+        body: JSON.stringify({
+          nombre: nombreProducto,
+          stock: stockProducto,
+          precio: precioProducto,
+        }),
         credentials: "include",
       });
       const nuevoProducto = await producto.json();
-      return nuevoProducto
+      set((state) => ({ productos: [...state.productos, nuevoProducto.data] }));
+      return nuevoProducto;
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+    }
+  },
+  eliminarProducto: async (nombre) => {
+    try {
+      const producto = await fetch(
+        `http://localhost:3000/api/productos/${nombre}`,
+        {
+          method: "DELETE",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      const productoJson = await producto.json();
+      set((state) => ({
+        productos: state.productos.filter(
+          (producto) => producto._id !== productoJson.data._id
+        ),
+      }));
+      return productoJson;
+    } catch (error) {
+      console.log(error.message);
     }
   },
 }));

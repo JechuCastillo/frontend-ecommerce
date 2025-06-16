@@ -1,7 +1,7 @@
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: white;
-  margin-bottom: 1em;
+  padding-bottom: 2em;
 }
 .custom-navbar {
   background-color: #0055ff; /* Azul Francia */
