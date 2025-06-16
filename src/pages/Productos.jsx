@@ -21,6 +21,7 @@ function Productos() {
               <th>Nombre</th>
               <th>Stock</th>
               <th>Precio</th>
+              <th></th>
             </tr>
             {productos.map((producto) => (
               <ProductoItem

@@ -26,8 +26,8 @@ function EliminarProducto() {
     }
   };
   return (
-    <Container className="w-50 p-2 m-auto my-5">
-      <h2>Eliminar Producto</h2>
+    <Container className="w-50 p-4 shadow">
+      <h2 className="text-center fw-bold text-uppercase">Eliminar Producto</h2>
       <Form className="d-flex flex-column gap-3" onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Nombre del producto</Form.Label>
@@ -36,9 +36,9 @@ function EliminarProducto() {
             placeholder="Ingrese el nombre del producto"
           />
         </Form.Group>
-        <Button type="submit">Eliminar</Button>
+        <Button type="submit" className="btn btn-danger">Eliminar</Button>
       </Form>
-      <div className="resultado"></div>
+      <div className="resultado text-center fw-bold fs-5 mt-3"></div>
     </Container>
   );
 }

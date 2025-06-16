@@ -8,6 +8,7 @@ import LayoutLogin from "./components/LayoutLogin";
 import Productos from "./pages/Productos";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
+import Carrito from './pages/Carrito'
 function App() {
   return (
     <Routes>
@@ -31,6 +32,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Productos></Productos>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/carrito"
+          element={
+            <ProtectedRoute>
+              <Carrito></Carrito>
             </ProtectedRoute>
           }
         ></Route>
