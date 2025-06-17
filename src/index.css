@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: white;
@@ -18,51 +21,13 @@ body {
   color: #cce6ff !important;
 }
 
-.container-button-admin {
-  width: 100%;
-  text-align: right;
-  margin: 2em;
-  float: right;
-}
 
-.form-login {
-  margin: auto;
-  text-align: center;
-}
-.login-titulo {
-  font-size: 5em;
-  text-align: center;
-}
 
-footer{
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #0055ff;
-  font-weight: bold;
-  padding: .5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2em;
-}
-footer p{
-    margin: 0;
-    color: white;
-}
 
-.home-title{
-  font-size: 3em;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: bold;
-  text-align: center;
-  margin: 1em 0;
 
-}
-img{
- width: 20em;
- height: 20em;
-}
+
+
+
 
 .boton-admin{
   color: white;

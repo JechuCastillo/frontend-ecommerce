@@ -14,8 +14,8 @@ function Productos() {
   return (
     <>
       <Container className="w-100 p-4">
-        <h1>Listado de productos</h1>
-        <Table className="w-75 text-center">
+        <h1 className="fw-bold text-center">Listado de productos</h1>
+        <Table className="w-100 text-center m-auto">
           <tbody>
             <tr>
               <th>Nombre</th>

@@ -34,7 +34,7 @@ function FormCrearProducto() {
   };
   return (
     <Form
-      className="w-50 d-flex flex-column gap-3 justify-content-center m-auto shadow p-3"
+      className="w-100 d-flex flex-column gap-3 justify-content-center m-auto shadow p-3"
       onSubmit={handleSubmit}
     >
       <h2 className="text-uppercase fw-bold text-center">

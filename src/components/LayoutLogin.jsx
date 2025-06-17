@@ -1,8 +1,9 @@
 import Container from "react-bootstrap/esm/Container";
 import { Outlet } from "react-router-dom";
+import style from './styles/LayoutLogin.module.css'
 function LayoutLogin() {
   return (
-    <Container className="my-5 border-0 w-50 p-5 py-50 shadow-sm">
+    <Container className={`${style["layout-login"]} my-5 border-0 w-50 shadow-sm`}>
       <Outlet></Outlet>
     </Container>
   );

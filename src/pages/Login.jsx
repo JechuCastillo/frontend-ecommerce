@@ -1,8 +1,9 @@
-import { Button } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../stores/authStore";
 import { Spinner } from "react-bootstrap";
+import style from "../components/styles/Login.module.css";
 function Login() {
   const { setCargando, cargando } = useAuthStore();
   const login = useAuthStore((state) => state.login);
@@ -32,10 +33,10 @@ function Login() {
 
   return (
     <Form
-      className="d-flex flex-column w-75 form-login"
+      className={`d-flex flex-column w-75 ${style["form-login"]}`}
       onSubmit={handleSubmit}
     >
-      <h1 className="login-titulo">Login</h1>
+      <h1 className={`${style["login-titulo"]}`}>Login</h1>
       <Form.Group
         className="justify-content-center my-3"
         controlId="form-email"

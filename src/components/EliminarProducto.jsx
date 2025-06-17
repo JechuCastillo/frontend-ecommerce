@@ -26,7 +26,7 @@ function EliminarProducto() {
     }
   };
   return (
-    <Container className="w-50 p-4 shadow">
+    <Container className="w-100 p-4 shadow">
       <h2 className="text-center fw-bold text-uppercase">Eliminar Producto</h2>
       <Form className="d-flex flex-column gap-3" onSubmit={handleSubmit}>
         <Form.Group>

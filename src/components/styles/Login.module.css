@@ -1,0 +1,22 @@
+.form-login {
+  margin: auto;
+  text-align: center;
+}
+.login-titulo {
+  font-size: 5em;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+    .form-login{
+        width: 100%;
+        padding: 0;
+    }
+    .login-titulo{
+        font-size: 2em;
+        text-align: center;
+    }
+    input{
+        width: 100% !important;
+    }
+    
+}

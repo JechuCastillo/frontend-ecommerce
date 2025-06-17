@@ -1,0 +1,12 @@
+.layout-login{
+    padding: 2em !important;
+
+}
+
+@media screen and (max-width: 768px) {
+    .layout-login{
+        width: 100% !important;
+        padding: 0;
+    }
+    
+}
