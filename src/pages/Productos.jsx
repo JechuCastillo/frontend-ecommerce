@@ -10,7 +10,7 @@ function Productos() {
       await getProductos(); // Espera a que se completen los productos
     };
     cargarProductos();
-  }, [productos]); 
+  }, []);
   return (
     <>
       <Container className="w-100 p-4">
@@ -23,12 +23,18 @@ function Productos() {
               <th>Precio</th>
               <th></th>
             </tr>
-            {productos.map((producto) => (
-              <ProductoItem
-                key={producto._id}
-                producto={producto}
-              ></ProductoItem>
-            ))}
+            {productos && productos.length > 0 ? (
+              productos.map((producto) => (
+                <ProductoItem
+                  key={producto._id}
+                  producto={producto}
+                ></ProductoItem>
+              ))
+            ) : (
+              <tr>
+                <td>No hay productos</td>
+              </tr>
+            )}
           </tbody>
         </Table>
       </Container>

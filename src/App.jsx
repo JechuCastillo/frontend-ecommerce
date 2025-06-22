@@ -8,8 +8,9 @@ import LayoutLogin from "./components/LayoutLogin";
 import Productos from "./pages/Productos";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
-import Carrito from './pages/Carrito'
+import Carrito from "./pages/Carrito";
 function App() {
+
   return (
     <Routes>
       {/*Ruta publica*/}

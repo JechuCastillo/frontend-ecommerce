@@ -1,7 +1,11 @@
 import { create } from "zustand";
 const useProductosStore = create((set) => ({
   productos: [],
+  trigger: false,
 
+  setTrigger: () => {
+    set((state) => ({ trigger: !state.trigger }));
+  },
   getProductos: async () => {
     try {
       const productosFetch = await fetch(
@@ -10,6 +14,7 @@ const useProductosStore = create((set) => ({
       );
       const productosJson = await productosFetch.json();
       set({ productos: productosJson.data });
+      return productosJson.data;
     } catch (error) {
       console.log(error.message);
     }
@@ -29,6 +34,10 @@ const useProductosStore = create((set) => ({
         credentials: "include",
       });
       const nuevoProducto = await producto.json();
+      if (!producto.ok) {
+        // Lanza el error con el mensaje del backend si existe
+        throw new Error(nuevoProducto.message || "Error al crear producto");
+      }
       set((state) => ({ productos: [...state.productos, nuevoProducto.data] }));
       return nuevoProducto;
     } catch (error) {

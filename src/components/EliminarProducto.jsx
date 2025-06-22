@@ -1,44 +1,48 @@
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import useProductosStore from "../stores/productosStore";
+import { useEffect } from "react";
+import ProductoItem from "./ProductoItem";
+import { useState } from "react";
 function EliminarProducto() {
-  const { eliminarProducto } = useProductosStore();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try{
-      if (!e.target[0].value) {
-        document.querySelector(".resultado").innerHTML =
-        "Ingrese el nombre del producto";
-        return;
-      }
-      const producto = await eliminarProducto(e.target[0].value);
-      e.target[0].value = "";
-      if (producto.success) {
-        document.querySelector(".resultado").innerHTML =
-        "Producto eliminado con exito";
-      } else {
-        document.querySelector(".resultado").innerHTML =
-        "Error al eliminar el producto";
-      }
-    }catch(error){
-     document.querySelector(".resultado").innerHTML =
-        "Error al eliminar el producto";
-      console.log(error);
-    }
+  const { productos, getProductos, trigger } = useProductosStore();
+  const [filtrados, setFiltrados] = useState([]);
+  useEffect(() => {
+    const cargarProductos = async () => {
+      setFiltrados(await getProductos()); // Espera a que se completen los productos
+    };
+    cargarProductos();
+  }, [trigger]);
+
+  const filtrar = (e) => {
+    const productosFiltrados = productos.filter((producto) => producto.nombre.includes(e.target.value));
+    setFiltrados(productosFiltrados);
   };
   return (
-    <Container className="w-100 p-4 shadow">
-      <h2 className="text-center fw-bold text-uppercase">Eliminar Producto</h2>
-      <Form className="d-flex flex-column gap-3" onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Nombre del producto</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Ingrese el nombre del producto"
-          />
-        </Form.Group>
-        <Button type="submit" className="btn btn-danger">Eliminar</Button>
-      </Form>
-      <div className="resultado text-center fw-bold fs-5 mt-3"></div>
+    <Container className="w-100 p-4 text-center">
+      <h1 className="fw-bold text-center">Listado de productos</h1>
+      <input type="text" placeholder="Buscar por nombre" onInput={filtrar}/>
+      <Table className="w-100 text-center m-auto">
+        <tbody>
+          <tr>
+            <th>Nombre</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th></th>
+          </tr>
+          {productos && productos.length > 0 ? (
+            filtrados.map((producto) => (
+              <ProductoItem
+                key={producto._id}
+                producto={producto}
+              ></ProductoItem>
+            ))
+          ) : (
+            <tr>
+              <td>No hay productos</td>
+            </tr>
+          )}
+        </tbody>
+      </Table>
     </Container>
   );
 }

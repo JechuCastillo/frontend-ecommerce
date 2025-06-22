@@ -3,7 +3,7 @@ import useProductosStore from "../stores/productosStore";
 import { Form, Button } from "react-bootstrap";
 import { Toast } from "react-bootstrap";
 function FormCrearProducto() {
-  const { crearProducto } = useProductosStore();
+  const { crearProducto, trigger, setTrigger } = useProductosStore();
   const [showToast, setShowToast] = useState(false);
   const [toastColor, setToastColor] = useState("success");
   const [toastMensaje, setToastMensaje] = useState("");
@@ -22,13 +22,13 @@ function FormCrearProducto() {
         setToastColor("success");
         setToastMensaje("Producto agregado con exito");
         setShowToast(true);
-      } else {
-        setToastColor("danger");
-        setToastMensaje("Error al agregar el producto");
-        setShowToast(true);
       }
       e.target.reset();
+      setTrigger(!trigger);
     } catch (error) {
+      setToastColor("danger");
+      setToastMensaje("Error al agregar el producto");
+      setShowToast(true);
       console.log("Error al agregar producto", error.message);
     }
   };
