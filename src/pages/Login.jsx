@@ -18,7 +18,7 @@ function Login() {
       if (data.success) {
         setTimeout(() => {
           setCargando();
-          navigate("/home");
+          navigate("/");
         }, 1000);
       } else {
         setCargando();

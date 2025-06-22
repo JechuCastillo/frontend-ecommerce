@@ -1,19 +1,27 @@
 import useCartStore from "../stores/cartStore";
 import { Button } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import useProductosStore from "../stores/productosStore";
+import useAuthStore from "../stores/authStore";
 function ProductoItem({ producto }) {
+  const navigate = useNavigate();
+  const { user } = useAuthStore();
   const location = useLocation();
   const { addProducto } = useCartStore();
   const { eliminarProducto, trigger, setTrigger } = useProductosStore();
   const handleClick = () => {
-    const productoCarrito = {
-      id: producto._id,
-      nombre: producto.nombre,
-      precio: producto.precio,
-      cantidad: 1,
-    };
-    addProducto(productoCarrito);
+    if (!user) {
+      navigate("/login");
+      return;
+    } else {
+      const productoCarrito = {
+        id: producto._id,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: 1,
+      };
+      addProducto(productoCarrito);
+    }
   };
 
   const handleClickEliminar = async () => {

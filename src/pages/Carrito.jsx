@@ -21,7 +21,7 @@ function Carrito() {
                         <td>{producto.nombre}</td>
                         <td>{producto.cantidad}</td>
                         <td>{producto.precio*producto.cantidad}</td>
-                        <td><button onClick={() => eliminarProducto(producto.id)}>Eliminar</button></td>
+                        <td><button className="btn btn-danger" onClick={() => eliminarProducto(producto.id)}>Eliminar</button></td>
                     </tr>
                 ))
             }

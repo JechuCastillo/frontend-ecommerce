@@ -20,7 +20,7 @@ function Register() {
     if (respuesta.success) {
       document.querySelector("#resultado").innerHTML = `Registro exitoso`;
       setTimeout(() => {
-        navigate("/");
+        navigate("/login");
       }, 1500);
     } else {
       document.querySelector("#resultado").innerHTML = `Error al registrarse`;

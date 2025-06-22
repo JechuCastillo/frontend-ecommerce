@@ -6,7 +6,7 @@ function ProtectedAdminRoute({ children }) {
     return <Navigate to="/"></Navigate>;
   }
   if (user.rol !== "admin") {
-    return <Navigate to="/home"></Navigate>;
+    return <Navigate to="/"></Navigate>;
   }
   return children;
 }

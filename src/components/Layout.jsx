@@ -33,7 +33,7 @@ function Layout() {
         </Container>
         <Outlet></Outlet>
       </main>
-      <footer className={style["footer"]}>
+      <footer className={`${style["footer"]}`}>
         <p className={style["footer-parrafo"]}>
           Jesus Castillo, todo los derechos reservados ©2025
         </p>

@@ -10,32 +10,16 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
 import Carrito from "./pages/Carrito";
 function App() {
-
   return (
     <Routes>
       {/*Ruta publica*/}
       <Route element={<LayoutLogin></LayoutLogin>}>
-        <Route index element={<Login></Login>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
       </Route>
       <Route path="/" element={<Layout></Layout>}>
-        <Route
-          index
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home></Home>
-            </ProtectedRoute>
-          }
-        ></Route>
-        <Route
-          path="/productos"
-          element={
-            <ProtectedRoute>
-              <Productos></Productos>
-            </ProtectedRoute>
-          }
-        ></Route>
+        <Route index path="/" element={<Home></Home>}></Route>
+        <Route path="/productos" element={<Productos></Productos>}></Route>
         <Route
           path="/carrito"
           element={
